@@ -1,7 +1,8 @@
 FROM node:6.10.3
 # Install Serverless and Grunt Node.js dependencies.
 RUN npm install -g serverless && \
-    npm install -g grunt
+    npm install -g grunt && \
+    npm install -g yarn@1.1.0
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN apt-get update && \
     apt-get install -y unzip && \
