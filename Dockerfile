@@ -10,6 +10,13 @@ RUN apt-get update && \
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \
     unzip awscli-bundle.zip && \
     ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+# Install DynamoDB local, for local integration tests.
+RUN apt-get install -y openjdk-7-jre
+RUN mkdir -p /opt/dynamodb/
+RUN curl -L http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_latest.tar.gz -o /opt/dynamodb/dynamo.tar.gz
+RUN cd /opt/dynamodb && tar xvf dynamo.tar.gz && rm dynamo.tar.gz && cd /
+# To run it, run:
+# nohup java -Djava.library.path=/opt/dynamodb/DynamoDBLocal_lib -jar /opt/dynamodb/DynamoDBLocal.jar &
 ENV TZ=Europe/London 
 ENV NODE_ENV=dev
 ENV AWS_DEFAULT_REGION=eu-west-2
