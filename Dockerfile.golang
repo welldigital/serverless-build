@@ -1,0 +1,10 @@
+FROM golang:1.10-alpine
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache nodejs
+
+RUN npm install -g serverless
+
+ENV TZ=Europe/London 
+ENV NODE_ENV=dev
+ENV AWS_DEFAULT_REGION=eu-west-2
