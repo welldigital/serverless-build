@@ -1,8 +1,15 @@
 FROM golang:1.10-alpine
 
+# Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN apk update && apk upgrade && \
-    apk add --no-cache nodejs
+    apk add --no-cache nodejs zip unzip python-dev curl
 
+# Install AWS CLI tools.
+RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \
+    unzip awscli-bundle.zip && \
+    ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
+# Install Serverless Framework.
 RUN npm install -g serverless
 
 ENV TZ=Europe/London 
