@@ -1,8 +1,15 @@
-FROM golang:1.10-alpine
+FROM golang:1.10-stretch
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
-RUN apk update && apk upgrade && \
-    apk add --no-cache nodejs zip unzip python-dev curl make git openssh-client
+RUN apt-get update -y && \
+    apt-get install -y zip unzip python-dev curl make git openssh-client
+
+# Install Node
+RUN curl -sL https://deb.nodesource.com/setup_9.x -o setup_9.x && \
+chmod +x setup_9.x && \
+./setup_9.x && \
+rm setup_9.x && \
+apt-get install nodejs
 
 # Install AWS CLI tools.
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \
