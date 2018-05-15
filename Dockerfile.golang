@@ -5,8 +5,8 @@ RUN apt-get update -y && \
     apt-get install -y zip unzip python-dev curl make git openssh-client
 
 # Setup SSH host verification for github.com (required for go get).
-mkdir -p ~/.ssh/ && \
-ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
+RUN mkdir -p ~/.ssh/ && \
+    ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 
 # Install Node
 RUN curl -sL https://deb.nodesource.com/setup_9.x -o setup_9.x && \
