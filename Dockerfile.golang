@@ -21,8 +21,11 @@ RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.
     ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 # Install Serverless Framework.
-RUN npm install -g serverless@1.29.0
+RUN npm install -g serverless@1.30.0
 
 ENV TZ=Europe/London 
 ENV NODE_ENV=dev
 ENV AWS_DEFAULT_REGION=eu-west-2
+
+# Install Go "deployer" Well deployment tools
+go install github.com/welldigital/deployer
