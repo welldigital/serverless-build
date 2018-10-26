@@ -6,3 +6,6 @@ build-node8:
 
 build-golang:
 	docker build -f Dockerfile.golang -t welldigital/serverless-build:golang .
+
+build-cimysql:
+	docker build -f Dockerfile.cimysql -t welldigital/serverless-build:cimysql .
