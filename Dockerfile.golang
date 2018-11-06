@@ -1,4 +1,4 @@
-FROM golang:1.11.2-alpine
+FROM golang:1.10-stretch
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN apt-get update -y && \
@@ -21,7 +21,7 @@ RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.
     ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 # Install docker
-RUN VER="18.06.1-ce" && curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz && tar -xz -C /tmp -f /tmp/docker-$VER.tgz && mv /tmp/docker/* /usr/bin
+RUN VER="18.06.1-ce" && curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz && tar -xz -C /tmp -f /tmp/docker-$VER.tgz && mv /tmp/docker/* /usr/bin
 
 # Install Serverless Framework.
 RUN npm install -g serverless@1.30.0
