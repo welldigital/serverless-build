@@ -26,7 +26,6 @@ RUN npm install -g serverless@1.30.0
 ENV TZ=Europe/London 
 ENV NODE_ENV=dev
 ENV AWS_DEFAULT_REGION=eu-west-2
-ENV GO111MODULE=on
 
 # Install Go "deployer" Well deployment tool
 RUN go get github.com/welldigital/deployer
