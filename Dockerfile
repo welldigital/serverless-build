@@ -1,4 +1,5 @@
-FROM node:6.10.3
+FROM node:6.16.0
+
 # Install Serverless and Grunt Node.js dependencies.
 RUN npm install -g serverless && \
     npm install -g grunt && \
