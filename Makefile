@@ -14,4 +14,4 @@ build-cimysql:
 	cd circleci/mysql && docker build -t welldigital/cimysql:5.6 .
 
 push-cimysql:
-	docker push welldigital/serverless-build:cimysql
+	docker push welldigital/cimysql:5.6
