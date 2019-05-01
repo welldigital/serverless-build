@@ -27,7 +27,7 @@ RUN DOCKERIZE_VERSION=v0.6.1 && \
   rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # Install Serverless Framework.
-RUN npm install -g serverless@1.36.3
+RUN npm install -g serverless@1.41.1
 
 ENV TZ=Europe/London
 ENV NODE_ENV=dev
