@@ -1,4 +1,4 @@
-FROM node:8.11
+FROM node:10.15.3-alpine
 # Install Serverless and Grunt Node.js dependencies.
 RUN npm install -g npm && \
     npm install -g serverless && \
