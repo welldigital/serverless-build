@@ -34,4 +34,6 @@ ENV NODE_ENV=dev
 ENV AWS_DEFAULT_REGION=eu-west-2
 
 # Install Go "deployer" Well deployment tool
-RUN go get github.com/welldigital/deployer
+RUN go get github.com/welldigital/deployer && \
+    go get -u github.com/mgechev/revive && \
+    go get github.com/jteeuwen/go-bindata/...
