@@ -1,2 +1,2 @@
-FROM circleci/mysql:5.6
+FROM circleci/mysql:5.7.27
 COPY ./mysql-config.cnf /etc/my.cnf
