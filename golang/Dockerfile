@@ -1,4 +1,4 @@
-FROM golang:1.12.7-stretch
+FROM golang:1.12.8-stretch
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN apt-get update -y && \
