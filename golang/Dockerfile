@@ -1,4 +1,4 @@
-FROM golang:1.12.9
+FROM golang:1.13.0
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN apt-get update -y && \
