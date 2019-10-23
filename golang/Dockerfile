@@ -1,21 +1,21 @@
-FROM golang:1.13.0
+FROM golang:1.13.3
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN apt-get update -y && \
-    apt-get install -y zip unzip tar python-dev curl make git openssh-client
+  apt-get install -y zip unzip tar python-dev curl make git openssh-client
 
 # Setup SSH host verification for github.com (required for go get).
 RUN mkdir -p ~/.ssh/ && \
-    ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
+  ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 
 # Install Node
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
-    apt-get install -y nodejs
+  apt-get install -y nodejs
 
 # Install AWS CLI tools.
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \
-    unzip awscli-bundle.zip && \
-    ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+  unzip awscli-bundle.zip && \
+  ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 # Install docker
 RUN VER="18.06.3-ce" && curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz && tar -xz -C /tmp -f /tmp/docker-$VER.tgz && mv /tmp/docker/* /usr/bin
@@ -27,13 +27,14 @@ RUN DOCKERIZE_VERSION=v0.6.1 && \
   rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # Install Serverless Framework.
-RUN npm install -g serverless@1.49.0
+RUN npm install -g serverless@1.54.0
 
 ENV TZ=Europe/London
 ENV NODE_ENV=dev
 ENV AWS_DEFAULT_REGION=eu-west-2
+ENV GOPRIVATE="github.com/welldigital"
 
 # Install Go "deployer" Well deployment tool
 RUN go get github.com/welldigital/deployer && \
-    go get -u github.com/mgechev/revive && \
-    go get github.com/jteeuwen/go-bindata/...
+  go get -u github.com/mgechev/revive && \
+  go get github.com/jteeuwen/go-bindata/...
