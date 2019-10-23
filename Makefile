@@ -9,9 +9,3 @@ build-golang:
 
 push-golang:
 	docker push welldigital/serverless-build:golang
-
-build-cimysql:
-	cd circleci/mysql && docker build -t welldigital/cimysql:5.6 .
-
-push-cimysql:
-	docker push welldigital/cimysql:5.6
