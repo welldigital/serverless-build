@@ -1,4 +1,4 @@
-FROM node:10.16
+FROM node:13.4.0
 # Install Serverless and Grunt Node.js dependencies.
 RUN npm install -g npm && \
   npm install -g serverless && \
