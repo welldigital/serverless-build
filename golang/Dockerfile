@@ -1,4 +1,4 @@
-FROM golang:1.13.3
+FROM golang:1.13.8
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN apt-get update -y && \
@@ -9,7 +9,7 @@ RUN mkdir -p ~/.ssh/ && \
   ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 
 # Install Node
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
   apt-get install -y nodejs
 
 # Install AWS CLI tools.
@@ -27,7 +27,10 @@ RUN DOCKERIZE_VERSION=v0.6.1 && \
   rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # Install Serverless Framework.
-RUN npm install -g serverless@1.54.0
+RUN npm install -g serverless@1.63.0
+
+# Install yarn
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 
 ENV TZ=Europe/London
 ENV NODE_ENV=dev
