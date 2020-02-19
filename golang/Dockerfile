@@ -27,7 +27,7 @@ RUN DOCKERIZE_VERSION=v0.6.1 && \
   rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # Install Serverless Framework.
-RUN npm install -g serverless@1.63.0
+RUN npm install -g serverless@1.55.1
 
 # Install yarn
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash
