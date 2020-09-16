@@ -1,36 +1,17 @@
-FROM golang:1.13.8
+FROM circleci/golang:1.15.2-node
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
-RUN apt-get update -y && \
-  apt-get install -y zip unzip tar python-dev curl make git openssh-client
+RUN sudo apt-get update && sudo apt-get install -y awscli 
 
 # Setup SSH host verification for github.com (required for go get).
 RUN mkdir -p ~/.ssh/ && \
   ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 
-# Install Node
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-  apt-get install -y nodejs
-
-# Install AWS CLI tools.
-RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \
-  unzip awscli-bundle.zip && \
-  ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-
-# Install docker
-RUN VER="18.06.3-ce" && curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz && tar -xz -C /tmp -f /tmp/docker-$VER.tgz && mv /tmp/docker/* /usr/bin
-
-# Install Dokerize.
-RUN DOCKERIZE_VERSION=v0.6.1 && \
-  curl -L -o dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
-  tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
-  rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-
 # Install Serverless Framework.
-RUN npm install -g serverless@1.55.1
+RUN sudo npm install -g serverless@1.55.1
 
 # Install yarn
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+RUN sudo su && curl -o- -L https://yarnpkg.com/install.sh | bash
 
 ENV TZ=Europe/London
 ENV NODE_ENV=dev
