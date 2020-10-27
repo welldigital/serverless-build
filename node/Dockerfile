@@ -1,7 +1,7 @@
 FROM node:lts
 # Install Serverless and Grunt Node.js dependencies.
 RUN npm install -g npm && \
-  npm install -g serverless@1.55.1 && \
+  npm install -g serverless@1.83.0 && \
   npm install -g grunt && \
   npm install -g gulp
 # Setup Yarn packages
