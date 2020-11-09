@@ -1,4 +1,4 @@
-FROM circleci/golang:1.15.2-node
+FROM circleci/golang:1.15.4-node
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN sudo apt-get update && sudo apt-get install -y awscli 
