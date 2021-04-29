@@ -1,0 +1,39 @@
+version: 2
+updates:
+- package-ecosystem: docker
+  directory: "/golang"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: circleci/golang
+    versions:
+    - 1.15.7.pre.node
+    - 1.15.8.pre.node
+    - 1.16.0.pre.node
+    - 1.16.1.pre.node
+    - 1.16.2.pre.node
+- package-ecosystem: docker
+  directory: "/node"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: node
+    versions:
+    - ">= 11.a, < 12"
+  - dependency-name: node
+    versions:
+    - ">= 12.a, < 13"
+- package-ecosystem: docker
+  directory: "/circleci/mysql"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: circleci/mysql
+    versions:
+    - "> 5.6, < 6"
+  - dependency-name: circleci/mysql
+    versions:
+    - ">= 8.a, < 9"
