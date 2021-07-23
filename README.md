@@ -9,11 +9,11 @@ Node image contains:
 * Grunt for build tasks
 * AWS CLI for interacting with AWS services
 
-Docker image contains:
+Go docker image contains:
 
 * Node runtime (required by serverless)
 * Serverless framework
-* Golang 1.10
+* Golang 
 
 ## Building
 
