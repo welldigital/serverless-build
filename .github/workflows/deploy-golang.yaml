@@ -3,7 +3,7 @@ name: Publish golang docker image to github packages
 on:
   push:
     branches:
-      - testNewBuild
+      - prod
 
 env:
   REGISTRY: ghcr.io
