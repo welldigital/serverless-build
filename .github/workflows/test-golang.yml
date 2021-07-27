@@ -1,9 +1,9 @@
-name: Test the builds
+name: Test the go image builds
 
 on:
   push:
     branches-ignore:
-      - release
+      - prod
 
 env:
   REGISTRY: ghcr.io
@@ -26,10 +26,3 @@ jobs:
           context: ./golang
           push: false
           tags: ghcr.io/welldigital/serverless-build:golang
-          
-      - name: Build the node image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        with:
-          context: ./node
-          push: false
-          tags: ghcr.io/welldigital/serverless-build:node
