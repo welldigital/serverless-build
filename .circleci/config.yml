@@ -1,0 +1,21 @@
+# note that actual build and deploy is done via github actions, this is here just to test it CAN build
+
+defaults: &defaults
+  docker:
+    - image: cimg/base:2021.04
+  working_directory: ~/serverless-build
+
+version: 2.1
+jobs:
+  check_node:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          make build-node
+          
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - check_node
