@@ -23,6 +23,10 @@ Building golang image:
 
 * `make build-golang`
 
+## Deploying 
+
+Merge to the prod branch.
+
 ## Running (interactive)
 
-* `docker run --rm -it welldigital/serverless-build:latest /bin/bash`
+* `docker run --rm -it ghcr.io/welldigital/serverless-build:latest /bin/bash`
