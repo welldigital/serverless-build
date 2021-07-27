@@ -32,5 +32,5 @@ jobs:
         with:
           context: ./node
           push: true
-          tags: ghcr.io/welldigital/serverless-build
+          tags: ghcr.io/welldigital/serverless-build:node
 
