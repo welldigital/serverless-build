@@ -2,7 +2,7 @@
 
 defaults: &defaults
   docker:
-    - image: docker:20.10
+    - image: cimg/base:2021.04
   working_directory: ~/serverless-build
 
 version: 2.1
@@ -12,8 +12,8 @@ jobs:
     steps:
       - checkout
       - run:
-          apt-get install -u 
-          make build-node
+          name: check node builds
+          run: make ci-node
           
 workflows:
   version: 2.1
