@@ -1,6 +1,8 @@
 # note that actual build and deploy is done via github actions, this is here just to test it CAN build
 
 defaults: &defaults
+  docker:
+    - image: docker:20.10
   working_directory: ~/serverless-build
 
 version: 2.1
@@ -10,6 +12,7 @@ jobs:
     steps:
       - checkout
       - run:
+          apt-get install -u 
           make build-node
           
 workflows:
