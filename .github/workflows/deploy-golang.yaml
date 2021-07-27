@@ -32,5 +32,5 @@ jobs:
         with:
           context: ./golang
           push: true
-          tags: welldigital/${{ env.IMAGE_NAME}}:golang
+          tags: ${{ env.IMAGE_NAME}}:golang
 
