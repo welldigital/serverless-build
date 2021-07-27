@@ -2,7 +2,7 @@
 
 defaults: &defaults
   docker:
-    - image: cimg/base:2021.04
+    - image: docker:17.05.0-ce-git
   working_directory: ~/serverless-build
 
 version: 2.1
