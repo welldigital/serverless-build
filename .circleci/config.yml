@@ -13,7 +13,7 @@ jobs:
       - checkout
       - run:
           name: check node builds
-          run: make ci-node
+          command: make ci-node
           
 workflows:
   version: 2.1
