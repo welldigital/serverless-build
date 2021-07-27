@@ -32,4 +32,5 @@ jobs:
         with:
           context: ./golang
           push: true
-          tags: ['golang']
+          tags:
+            - golang
