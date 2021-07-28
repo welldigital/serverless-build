@@ -25,8 +25,10 @@ Building golang image:
 
 ## Deploying 
 
-Merge to the prod branch.
+Merge changes to the prod branch and new images will be built and deployed via github actions. 
 
 ## Running (interactive)
 
-* `docker run --rm -it ghcr.io/welldigital/serverless-build:latest /bin/bash`
+* `docker run --rm -it ghcr.io/welldigital/serverless-build:golang /bin/bash`
+* `docker run --rm -it ghcr.io/welldigital/serverless-build:node /bin/bash`
+
