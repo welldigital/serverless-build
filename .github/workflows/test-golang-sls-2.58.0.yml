@@ -1,4 +1,4 @@
-name: Test the go image builds
+name: Test the go/sls@2.58.0 image builds
 
 on:
   push:
