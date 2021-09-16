@@ -25,4 +25,4 @@ jobs:
         with:
           context: ./golang
           push: false
-          tags: ghcr.io/welldigital/serverless-build:golang
+          tags: ghcr.io/welldigital/serverless-build:services-golang
