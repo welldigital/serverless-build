@@ -14,15 +14,12 @@ RUN sudo npm install -g serverless@1.83.0
 RUN sudo su && curl -o- -L https://yarnpkg.com/install.sh | bash
 
 # Install GitHub LFS.
-RUN sudo apt-get install git-lfs
+RUN sudo apt-get install -y git-lfs && sudo git lfs install
 
 ENV TZ=Europe/London
 ENV NODE_ENV=dev
 ENV AWS_DEFAULT_REGION=eu-west-2
 ENV GOPRIVATE="github.com/welldigital"
-
-# initialize GitHub LFS
-RUN git lfs install
 
 RUN go install github.com/mgechev/revive@latest
 RUN go get github.com/jteeuwen/go-bindata/...
