@@ -13,6 +13,9 @@ RUN sudo npm install -g serverless@1.83.0
 # Install yarn
 RUN sudo su && curl -o- -L https://yarnpkg.com/install.sh | bash
 
+# Install GitHub LFS.
+RUN sudo apt-get install -y git-lfs && sudo git lfs install
+
 ENV TZ=Europe/London
 ENV NODE_ENV=dev
 ENV AWS_DEFAULT_REGION=eu-west-2
