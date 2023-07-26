@@ -1,9 +1,9 @@
-FROM circleci/golang:1.16.6-node
+FROM circleci/golang:1.16.6
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN sudo apt-get update && sudo apt-get install -y awscli
 # Install node 17 and npm tools
-RUN curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash - && sudo apt-get install -y nodejs && node --version && npm -v
+RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs && node --version && npm -v
 
 # Setup SSH host verification for github.com (required for go get).
 RUN mkdir -p ~/.ssh/ && \
