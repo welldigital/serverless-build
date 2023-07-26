@@ -1,4 +1,4 @@
-FROM cimg/go:1.20-node
+FROM cimg/go:1.17-node
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN sudo apt-get update && sudo apt-get install -y awscli
