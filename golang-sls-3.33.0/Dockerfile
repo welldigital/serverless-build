@@ -1,4 +1,4 @@
-FROM circleci/golang:1.16.6-node
+FROM cimg/go:1.20-node
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN sudo apt-get update && sudo apt-get install -y awscli
@@ -8,7 +8,7 @@ RUN mkdir -p ~/.ssh/ && \
   ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 
 # Install Serverless Framework.
-RUN sudo npm install -g serverless@2.58.0
+RUN sudo npm install -g serverless@3.33.0
 
 # Install yarn
 RUN sudo su && curl -o- -L https://yarnpkg.com/install.sh | bash
