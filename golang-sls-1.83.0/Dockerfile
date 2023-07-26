@@ -3,14 +3,14 @@ FROM circleci/golang:1.16.6
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN sudo apt-get update && sudo apt-get install -y awscli
 # Install node 17 and npm tools
-RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - && sudo apt-get install -y nodejs && node --version && npm -v
+RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs && node --version && npm -v
 
 # Setup SSH host verification for github.com (required for go get).
 RUN mkdir -p ~/.ssh/ && \
   ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 
 # Install Serverless Framework.
-RUN sudo npm install -g serverless@1.83.0
+RUN sudo npm install -g serverless@2.72.3
 
 # Install yarn
 RUN sudo su && curl -o- -L https://yarnpkg.com/install.sh | bash
