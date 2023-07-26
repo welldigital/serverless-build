@@ -10,7 +10,7 @@ RUN mkdir -p ~/.ssh/ && \
   ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 
 # Install Serverless Framework.
-RUN sudo npm install -g serverless@2.72.3
+RUN sudo npm install -g serverless@2.72.4
 
 # Install yarn
 RUN sudo su && curl -o- -L https://yarnpkg.com/install.sh | bash
