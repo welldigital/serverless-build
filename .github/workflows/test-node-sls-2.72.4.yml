@@ -1,0 +1,28 @@
+name: Test the node-sls-2.72.4 image builds
+
+on:
+  push:
+    branches-ignore:
+      - prod
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-images:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+          
+      - name: Build the node image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: ./node-sls-2.72.4
+          push: false
+          tags: ghcr.io/welldigital/serverless-build:node-sls-2.72.4
