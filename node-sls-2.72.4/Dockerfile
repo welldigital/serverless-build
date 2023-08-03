@@ -9,7 +9,8 @@ RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN apt-get update && \
   apt-get install -y zip unzip  python3 && \
-  apt install python3.8-venv
+  apt install python3.8-venv && \
+  python3 -m venv venv
 # Install AWS CLI tools.
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.96.zip" -o "awscli-bundle.zip" && \
   unzip awscli-bundle.zip && \
