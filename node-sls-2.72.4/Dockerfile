@@ -6,14 +6,15 @@ RUN npm install -g npm && \
   npm install -g gulp
 # Setup Yarn packages
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash
-# Install unzip and Python build tools to be able to install the AWS CLI tools.
+# Install unzip, zip, Python3, Python venv and create a symbolic link for python
 RUN apt-get update && \
-  apt-get install -y zip unzip  python3 && \
-  apt install python3.8-venv
-# Install AWS CLI tools.
-RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.96.zip" -o "awscli-bundle.zip" && \
-  unzip awscli-bundle.zip && \
-  ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+  apt-get install -y zip unzip python3 python3-venv && \
+  ln -s /usr/bin/python3 /usr/bin/python
+# Install unzip and AWS CLI
+RUN apt-get update && apt-get install -y unzip && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install
 ENV TZ=Europe/London 
 ENV NODE_ENV=dev
 ENV AWS_DEFAULT_REGION=eu-west-2
