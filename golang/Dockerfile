@@ -17,7 +17,7 @@ RUN sudo su && curl -o- -L https://yarnpkg.com/install.sh | bash
 RUN sudo apt-get install -y git-lfs && sudo git lfs install
 
 ENV TZ=Europe/London
-ENV NODE_ENV=dev
+ENV NODE_ENV=devd
 ENV AWS_DEFAULT_REGION=eu-west-2
 ENV GOPRIVATE="github.com/welldigital"
 
