@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM golang:1.17
 
 RUN go get -u github.com/golang/lint/golint && \
   go get -u github.com/stripe/safesql && \
