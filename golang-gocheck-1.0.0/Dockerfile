@@ -1,6 +1,6 @@
 FROM golang:1.17
 
-RUN go get -u github.com/golang/lint/golint && \
+RUN go get -u github.com/golang/x/lint/golint && \
   go get -u github.com/stripe/safesql && \
   go get github.com/securego/gosec/cmd/gosec/...
 
