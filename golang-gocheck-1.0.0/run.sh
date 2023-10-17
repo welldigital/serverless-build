@@ -1,0 +1,1 @@
+docker run --rm -v `pwd`/gocheck:/gocheck -v ~/go/src/:/go/src welldigital/gocheck:latest
