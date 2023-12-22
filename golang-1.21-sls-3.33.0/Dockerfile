@@ -22,7 +22,6 @@ ENV AWS_DEFAULT_REGION=eu-west-2
 ENV GOPRIVATE="github.com/welldigital"
 
 RUN go install github.com/mgechev/revive@v1.1.3
-RUN go get github.com/jteeuwen/go-bindata/...
 
 # go mod directory must be clean for circleci cache
 RUN sudo rm -rf /go/pkg/mod/*
