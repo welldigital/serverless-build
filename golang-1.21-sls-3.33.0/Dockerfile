@@ -1,11 +1,11 @@
 FROM cimg/go:1.21.5-node
 
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
-RUN sudo apt-get update && sudo apt-get install -y awscliv2
+RUN sudo apt-get update
 
-# RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-# RUN unzip awscliv2.zip
-# RUN sudo ./aws/install
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN sudo ./aws/install
 
 RUN echo "AWS Version: " $(aws --version)
 
