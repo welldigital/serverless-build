@@ -1,7 +1,6 @@
 FROM cimg/android:2024.01.1-node
 
-# Install unzip and Python build tools to be able to install the AWS CLI tools.
-RUN sudo apt-get update
+RUN apt-get update && apt-get install -y curl git build-essential
 
 # Install ruby-build
 RUN git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
