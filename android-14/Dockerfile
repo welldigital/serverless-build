@@ -1,19 +1,16 @@
+# Use cimg/android:2024.01.1-node as the base image
 FROM cimg/android:2024.01.1-node
 
-RUN apt-get update && apt-get install -y curl git build-essential
+# Update the package lists
+RUN sudo apt-get update
 
-# Install ruby-build
-RUN git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+# Install Ruby 3.3.0
+RUN curl "https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.tar.gz" -o "ruby-3.3.0.tar.gz"
+RUN tar -xvzf ruby-3.3.0.tar.gz
+RUN cd ruby-3.3.0 && ./configure && make && sudo make install
 
-# Set the desired Ruby version as an environment variable
-ENV RUBY_VERSION 3.3.0
+# Install Bundler
+RUN gem install bundler
 
-# Install the specific Ruby version
-RUN rbenv install $RUBY_VERSION
-RUN rbenv global $RUBY_VERSION
-
-# Set the PATH to include ruby-build and ruby shims
-ENV PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
-
-# Install your application gems
-RUN gem install bundler && bundle config --global frozen 1
+# Install Fastlane
+RUN sudo gem install fastlane
