@@ -16,3 +16,6 @@ RUN gem install bundler
 
 # Install Fastlane
 RUN sudo gem install fastlane
+
+RUN sudo apt update
+RUN sudo apt install openjdk-17-jdk
