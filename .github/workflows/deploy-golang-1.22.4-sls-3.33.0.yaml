@@ -3,7 +3,7 @@ name: Publish golang@1.22.4/sls@3.33.0 image builds docker image to github packa
 on:
   push:
     branches:
-      - master
+      - golang-1.22.4
 
 env:
   REGISTRY: ghcr.io
