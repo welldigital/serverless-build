@@ -1,0 +1,29 @@
+name: Test the cimg/mysql@8.0.0 image builds
+
+on:
+  push:
+    branches-ignore:
+      - prod
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-images:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build the go image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: ./mysql-8.0.0
+          push: false
+          tags: ghcr.io/welldigital/serverless-build:mysql-8.0.0
+
