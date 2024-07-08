@@ -3,7 +3,7 @@ name: Publish cimg/mysql@8.0.0 image builds docker image to github packages
 on:
   push:
     branches:
-      - prod
+      - mysql-8.0
 
 env:
   REGISTRY: ghcr.io
