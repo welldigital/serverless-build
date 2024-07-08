@@ -31,6 +31,7 @@ RUN sudo apt-get install -y git-lfs && sudo git lfs install
 ENV TZ=Europe/London
 ENV NODE_ENV=dev
 ENV AWS_DEFAULT_REGION=eu-west-2
+
 ENV GOPRIVATE="github.com/welldigital"
 
 RUN go install github.com/mgechev/revive@v1.1.3
