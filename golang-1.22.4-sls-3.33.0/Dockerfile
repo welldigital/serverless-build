@@ -24,4 +24,4 @@ RUN sudo apt-get update && \
   go install github.com/mgechev/revive@latest && \
   go install github.com/kevinburke/go-bindata/v4/...@latest && \
 # go mod directory must be clean for circleci cache
-  rm -rf /go/pkg/mod/* && sudo chmod 777 /home/circleci/go/pkg/*
+  rm -rf /home/circleci/go/pkg/* && sudo chmod 777 /home/circleci/go/pkg/*
