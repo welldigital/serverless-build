@@ -30,5 +30,7 @@ ENV GOPRIVATE="github.com/welldigital"
 RUN go install github.com/mgechev/revive@latest && \
   go install github.com/kevinburke/go-bindata/v4/...@latest
 
+RUN cd /go && ls -l
+
 # go mod directory must be clean for circleci cache
 RUN rm -rf /go/pkg/mod/* && sudo chmod 777 /go/pkg/mod/*
