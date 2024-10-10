@@ -31,4 +31,4 @@ RUN go install github.com/mgechev/revive@latest && \
   go install github.com/kevinburke/go-bindata/v4/...@latest
 
 # go mod directory must be clean for circleci cache
-RUN sudo chmod 660 /go/pkg/mod && rm -rf /go/pkg/mod/*
+RUN rm -rf /go/pkg/mod/* && sudo chmod 777 /go/pkg/mod/*
