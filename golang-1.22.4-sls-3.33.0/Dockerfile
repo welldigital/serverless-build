@@ -3,17 +3,10 @@ FROM cimg/go:1.22.4-node
 # Install unzip and Python build tools to be able to install the AWS CLI tools.
 RUN sudo apt-get update
 
-
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-RUN unzip awscliv2.zip
-RUN sudo ./aws/install
-
-RUN sudo ls
-RUN sudo rm -rf aws && rm awscliv2.zip
-RUN sudo ls
-RUN aws --version
-RUN sudo ls
-
+# Install AWS Cli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+  unzip awscliv2.zip && \
+  sudo ./aws/install
 
 # Setup SSH host verification for github.com (required for go get).
 RUN mkdir -p ~/.ssh/ && \
@@ -34,8 +27,8 @@ ENV AWS_DEFAULT_REGION=eu-west-2
 
 ENV GOPRIVATE="github.com/welldigital"
 
-RUN go install github.com/mgechev/revive@latest
-RUN go install github.com/kevinburke/go-bindata/v4/...@latest
+RUN go install github.com/mgechev/revive@latest && \
+  go install github.com/kevinburke/go-bindata/v4/...@latest
 
 # go mod directory must be clean for circleci cache
-RUN sudo rm -rf /go/pkg/mod/*
+RUN sudo chmod 660 /go/pkg/mod && rm -rf /go/pkg/mod/*
