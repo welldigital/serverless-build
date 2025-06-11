@@ -32,4 +32,4 @@ jobs:
         with:
           context: ./golang-1.24.4-sls-3.33.0
           push: true
-          tags: ghcr.io/welldigital/serverless-build:golang-1.23.4-sls-3.33.0
+          tags: ghcr.io/welldigital/serverless-build:golang-1.24.4-sls-3.33.0
